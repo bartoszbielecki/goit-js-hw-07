@@ -37,5 +37,14 @@ galleryList.addEventListener("click", (event) => {
       `<img src="${source}" width="800" height="600">`
     );
     instance.show();
+
+    const handleEscKeyPress = (event) => {
+      if (event.code === "Escape") {
+        instance.close();
+        window.removeEventListener("keydown", handleEscKeyPress);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscKeyPress);
   }
 });
