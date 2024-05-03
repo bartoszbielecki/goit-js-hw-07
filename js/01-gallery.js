@@ -1,4 +1,4 @@
-import galleryItems from "./gallery-items.js";
+import galleryItems from "./js/gallery-items.js";
 
 const galleryList = document.createElement("ul");
 galleryList.classList.add("gallery");
