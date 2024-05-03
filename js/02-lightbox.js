@@ -1,36 +1,26 @@
 import { galleryItems } from "./gallery-items.js";
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min";
 
-const galleryList = document.createElement("ul");
-galleryList.classList.add("gallery");
-document.body.appendChild(galleryList);
+document.addEventListener("DOMContentLoaded", function () {
+  const gallery = document.querySelector(".gallery");
 
-function createGalleryItem(item) {
-  const galleryItem = document.createElement("li");
-  galleryItem.classList.add("gallery__item");
+  galleryItems.forEach((item) => {
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    const image = document.createElement("img");
 
-  const galleryLink = document.createElement("a");
-  galleryLink.classList.add("gallery__link");
-  galleryLink.href = item.original;
+    link.classList.add("gallery__item");
+    link.href = item.original;
+    image.classList.add("gallery__image");
+    image.src = item.preview;
+    image.alt = item.description;
 
-  const galleryImage = document.createElement("img");
-  galleryImage.classList.add("gallery__image");
-  galleryImage.src = item.preview;
-  galleryImage.alt = item.description;
+    link.appendChild(image);
+    listItem.appendChild(link);
+    gallery.appendChild(listItem);
+  });
 
-  galleryLink.appendChild(galleryImage);
-  galleryItem.appendChild(galleryLink);
-
-  return galleryItem;
-}
-
-galleryItems.forEach((item) => {
-  const galleryItem = createGalleryItem(item);
-  galleryList.appendChild(galleryItem);
-});
-
-const lightbox = new SimpleLightbox(".gallery a", {
-  captionsData: "alt",
-  captionDelay: 250,
+  const lightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionDelay: 250,
+  });
 });
