@@ -14,9 +14,9 @@ function createGalleryItem(item) {
 
   const galleryImage = document.createElement("img");
   galleryImage.classList.add("gallery__image");
-  galleryImage.src = item.url;
-  galleryImage.dataset.source = item.url;
-  galleryImage.alt = item.alt;
+  galleryImage.src = item.preview;
+  galleryImage.dataset.source = item.original;
+  galleryImage.alt = item.description;
 
   galleryLink.appendChild(galleryImage);
   galleryItem.appendChild(galleryLink);
