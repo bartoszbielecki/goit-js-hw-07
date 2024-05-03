@@ -10,7 +10,7 @@ function createGalleryItem(item) {
 
   const galleryLink = document.createElement("a");
   galleryLink.classList.add("gallery__link");
-  galleryLink.href = item.url;
+  galleryLink.href = item.original;
 
   const galleryImage = document.createElement("img");
   galleryImage.classList.add("gallery__image");
