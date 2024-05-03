@@ -24,7 +24,6 @@ function createGalleryItem(item) {
   const galleryLink = document.createElement("a");
   galleryLink.classList.add("gallery__link");
   galleryLink.href = item.url;
-  galleryLink.target = "_blank";
 
   const galleryImage = document.createElement("img");
   galleryImage.classList.add("gallery__image");
@@ -41,4 +40,15 @@ function createGalleryItem(item) {
 galleryItems.forEach((item) => {
   const galleryItem = createGalleryItem(item);
   galleryList.appendChild(galleryItem);
+});
+
+galleryList.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.tagName === "IMG") {
+    const source = event.target.dataset.source;
+    const instance = basicLightbox.create(
+      `<img src="${source}" width="800" height="600">`
+    );
+    instance.show();
+  }
 });
